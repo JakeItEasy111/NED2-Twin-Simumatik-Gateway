@@ -1,0 +1,12 @@
+services:
+  simumatik-niryo-bridge:
+    build: .
+    container_name: simumatik_gateway_client
+    restart: unless-stopped
+    # Allows the container to talk directly to your physical network / robot IP
+    network_mode: "host"
+    volumes:
+      # Mounts your script folder for live host editing
+      - ./app:/workspace/app
+    environment:
+      - ROBOT_IP=10.10.10.10
